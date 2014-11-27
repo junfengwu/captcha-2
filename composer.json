@@ -1,0 +1,21 @@
+{
+    "name": "augneb/captcha",
+    "description": "A Simple Captcha Package for Laravel 4",
+    "keywords": ["L4", "Laravel 4", "Laravel", "Captcha"],
+    "homepage": "http://github.com/augneb/captcha",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "tudou",
+            "email": "augneb@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "~4"
+    },
+    "psr-0": {
+        "Augneb\\Captcha": "src/"
+    }
+}
