@@ -1,4 +1,4 @@
-<?php namespace Augneb\Captcha;
+<?php namespace Captcha;
 
 // use Config, Str, Session, Hash, URL;
 
