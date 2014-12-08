@@ -1,8 +1,9 @@
 <?php
 
+
 require 'vendor/autoload.php';
 
-use Captcha;
+use Augneb\Captcha as Captcha;
 
-Captcha::info();
+Captcha\Captcha::info();
 
