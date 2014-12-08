@@ -1,5 +1,6 @@
 <?php namespace Augneb\Captcha;
 
+use Config;
 use Illuminate\Support\ServiceProvider;
 
 class CaptchaServiceProvider extends ServiceProvider 
@@ -56,7 +57,7 @@ class CaptchaServiceProvider extends ServiceProvider
 			if (empty($aliases['Captcha']))
 			{
 				$loader = \Illuminate\Foundation\AliasLoader::getInstance();
-				$loader->alias('Captcha','Augneb\Facades\Captcha');
+				$loader->alias('Captcha','Augneb\Captcha\Facades\Captcha');
 			}
 
 		});

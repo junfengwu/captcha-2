@@ -28,7 +28,7 @@ class Captcha
     	if ( ! Captcha::$singleton)
     	{
     		self::$config = Config::get('captcha::config');
-    		self::$config['assets'] = __DIR__ . '/../../../fonts/';
+    		self::$config['assets'] = realpath(__DIR__ . '/../../../fonts'). '/';
 
     		Captcha::$singleton = new Captcha();
     	}
@@ -59,7 +59,7 @@ class Captcha
 		// 字体
 		$fonts = [];
 		foreach (glob(static::$config['assets'] . '*.ttf') as $file)
-			$fonts[] = end(explode('/', str_replace('\\', '/', $file)));
+			$fonts[] = substr(strrchr($file, '/'), 1);
 
 		// 未设置字体则随机
 		if (static::$config['font'] and in_array(static::$config['font'], $fonts)) 
@@ -67,7 +67,7 @@ class Captcha
 		else
 			$captchaFont = static::$config['assets'] . $fonts[array_rand($fonts)];
 
-		// 建立一幅 static::$config['widht'] x static::$config['height'] 的图像
+		// 建立一幅 static::$config['width'] x static::$config['height'] 的图像
 		$captchaImage = imagecreate($captchaWidth, $captchaHeight);
 
 		// 设置背景	  
@@ -127,11 +127,11 @@ class Captcha
 		$A = mt_rand(1, static::$config['height']/2);				   			 // 振幅
 		$b = mt_rand(-static::$config['height']/4, static::$config['height']/4); // Y轴方向偏移量
 		$f = mt_rand(-static::$config['height']/4, static::$config['height']/4); // X轴方向偏移量
-		$T = mt_rand(static::$config['height'], static::$config['widht']*2);     // 周期
+		$T = mt_rand(static::$config['height'], static::$config['width']*2);     // 周期
 		$w = (2* M_PI)/$T;
 						
 		$px1 = 0; // 曲线横坐标起始位置
-		$px2 = mt_rand(static::$config['widht']/2, static::$config['widht'] * 0.8); // 曲线横坐标结束位置
+		$px2 = mt_rand(static::$config['width']/2, static::$config['width'] * 0.8); // 曲线横坐标结束位置
 
 		for ($px = $px1; $px <= $px2; $px ++) 
 		{
@@ -151,11 +151,11 @@ class Captcha
 		// 曲线后部分
 		$A = mt_rand(1, static::$config['height']/2);				  // 振幅		
 		$f = mt_rand(-static::$config['height']/4, static::$config['height']/4);   // X轴方向偏移量
-		$T = mt_rand(static::$config['height'], static::$config['widht']*2);  // 周期
+		$T = mt_rand(static::$config['height'], static::$config['width']*2);  // 周期
 		$w = (2* M_PI)/$T;		
 		$b = $py - $A * sin($w*$px + $f) - static::$config['height']/2;
 		$px1 = $px2;
-		$px2 = static::$config['widht'];
+		$px2 = static::$config['width'];
 
 		for ($px = $px1; $px <= $px2; $px ++) 
 		{
