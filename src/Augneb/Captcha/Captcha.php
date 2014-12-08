@@ -1,6 +1,6 @@
 <?php namespace Augneb\Captcha;
 
-use Config, Str, Session, Hash, URL;
+use Config, Str, Session, Hash;
 
 /**
  *
@@ -198,18 +198,5 @@ class Captcha
 		$captchaHash = Session::get('captchaHash');
 
         return $value != null && $captchaHash != null && Hash::check(static::$config['sensitive'] === true ? $value : Str::lower($value), $captchaHash);
-    }
-
-    /**
-     * Returns an URL to the captcha image
-     * For example, you can use in your view something like
-     * <img src="<?php echo Captcha::img(); ?>" alt="" />
-     *
-     * @access	public
-     * @return	string
-     */
-    public static function img() 
-    {
-		return URL::to('captcha?' . mt_rand(100000, 999999));
     }
 }
