@@ -33,7 +33,7 @@ class CaptchaServiceProvider extends ServiceProvider
 		
 		$validator::extend('captcha', function($attribute, $value, $parameters)
 		{
-			return \Captcha::check($value);
+			return Captcha::check($value);
 		});
 	}
 
@@ -51,7 +51,7 @@ class CaptchaServiceProvider extends ServiceProvider
 
 	    $this->app->booting(function()
 	    {
-			$aliases = \Config::get('app.aliases');
+			$aliases = Config::get('app.aliases');
 
 			if (empty($aliases['Captcha']))
 			{
