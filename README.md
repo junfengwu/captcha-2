@@ -80,7 +80,7 @@ To use your own settings, publish config.
 
 ## Links
 
-* [L4 Captcha on Github](https://github.com/mewebstudio/captcha)
+* [L4 Captcha on Github](https://github.com/augneb/captcha)
 * [L4 Captcha on Packagist](https://packagist.org/packages/augneb/captcha)
 * [License](http://www.opensource.org/licenses/mit-license.php)
 * [Laravel website](http://laravel.com)
